@@ -42,7 +42,7 @@
 
 \usepackage{sectsty}
 \sectionfont{\large}
- 
+
  \usepackage{graphicx}
 \graphicspath{ {images/} }
 \usepackage{dirtytalk}
@@ -61,7 +61,7 @@
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
 
 \center % Center everything on the page
- 
+
 %----------------------------------------------------------------------------------------
 %	HEADING SECTIONS
 %----------------------------------------------------------------------------------------
@@ -77,7 +77,7 @@
 \HRule \\[0.4cm]
 { \LARGE \bfseries Assignment One - Dijkstra algorithm}\\[0.4cm] % Title of your document
 \HRule \\[1.5cm]
- 
+
 %----------------------------------------------------------------------------------------
 %	AUTHOR SECTION
 %----------------------------------------------------------------------------------------
@@ -119,13 +119,48 @@ Dr. James \textsc{McDermott} % Supervisor's Name
 %--------------------------------
 \twocolumn
 \section{Dijkstra's Algorithm}
-{Some Text}
+{\bf Briefly describe Dijkstra's algorithm for solving the shortest path problem
+(which we have covered in class), including a statement of its time complexity.}\\\\
+{The answer}\\\\
+{Dijkstra's Algorithm is among the most fundamental algorithms in modern computer science, used
+for finding the path of lowest cost between a given point in the graph, and all others. More
+formally; Given a vertex $s$ in a weighted directed graph $G = (V,E)$ where edges are non-negitive, Dijkstra's Algorithm
+finds the path of lowest cost from $s$ to all other vertices in G. This is sometimes referred to as the
+{\it single-source shortest path problem}. \\\\
+The algorithm does this as follows; all nodes are assigned some cost value, set to zero for the initial node
+and infinity for the rest. All vertices, except the initial one, are passed into a set which is
+cycled through. The neighbors of the initial node are considered first, taking the cost (or distance)
+associated with that journey between the nodes.}
+
+
 \section{Bidirectional Dijkstra's Algorithm}
+{\bf Describe the bidirectional Dijkstra algorithm – a variant which is more efficient in practice}
+{\it In order to understand it, you can research it in textbooks, MOOCs, blogs,
+or other external resources. State any assumptions needed for the algorithm to work.}\\\\
+{The answer}
+
 \section{Dijkstra's Original Algorithm - Comparison}
+{\bf With the aid of a diagram, explain how it differs from Dijkstra's original algorithm.}\\\\
+{The answer}
+
+
 \section{Time Complexity}
+{\bf State its time complexity and explain why it is more efficient.}\\\\
+{The answer}
+
 \section{Implementation}
-\section{Run-Time behaviour}
+{\bf Implement both Dijkstra's algorithm and the bidirectional variant, using appropriate data structures for efficiency.}\\\\
+{The answer}
+
+\section{Run-Time behavior}
+{\bf Test the run-time behavior of both algorithms on randomly generated graphs of varying
+sizes in order to demonstrate their scaling behavior. Include a table of data showing run-times.}\\\\
+{The answer}
+
 \section{Conclusions}
+{\bf Briefly state your conclusion concerning run-time behavior.}\\\\
+{The answer}
+
 \clearpage
 \begin{thebibliography}{9}
 \end{thebibliography}
