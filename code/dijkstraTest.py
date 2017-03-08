@@ -42,10 +42,11 @@ if __name__ == "__main__":
 
     for i in range(1):
         Graph = gg.gen_random_graph()
-        print(nx.nodes(Graph))
-        print(nx.edges(Graph))
-        print(choice(nx.nodes(Graph)))
+        # print(nx.nodes(Graph))
+        # print(nx.edges(Graph))
+        initalNode = choice(nx.nodes(Graph))
+        print(initalNode)
 
-        results = pqd.dijkstra(Graph, choice(nx.nodes(Graph)))
+        results = pqd.dijkstra(Graph, initalNode)
         print(results["distances"])
         # print(timed(pqd.dijkstra(Graph, choice(nx.nodes(Graph)))))

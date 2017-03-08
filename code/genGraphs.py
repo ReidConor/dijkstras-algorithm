@@ -45,7 +45,9 @@ def gen_random_graph():
     Graph = nx.relabel_nodes(Graph,mapping)
 
     for (u, v) in Graph.edges():
-        Graph.edge[u][v]['weight'] = randint(0,10)
+        Graph.edge[u][v]['weight'] = randint(1,10)
+
+
 
     return Graph
 
@@ -54,5 +56,6 @@ if __name__ == "__main__":
     print(nx.number_of_nodes(Graph))
     print(nx.number_of_edges(Graph))
     print(Graph.nodes())
+    print(Graph.edges(data=True))
     # nx.draw_spectral(Graph, with_labels=True)
     # plt.show()
