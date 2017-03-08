@@ -39,6 +39,8 @@
  top=15mm,
  bottom=20mm
  }
+ \usepackage{indentfirst}
+
 
 \usepackage{sectsty}
 \sectionfont{\large}
@@ -47,8 +49,6 @@
 \graphicspath{ {images/} }
 \usepackage{dirtytalk}
 \usepackage{csquotes}
-
-\usepackage{indentfirst}
 
 \setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
 \setlength{\columnsep}{0.9cm}
@@ -75,7 +75,7 @@
 %----------------------------------------------------------------------------------------
 
 \HRule \\[0.4cm]
-{ \LARGE \bfseries Assignment One - Dijkstra algorithm}\\[0.4cm] % Title of your document
+{ \LARGE \bfseries Assignment One - Dijkstra's Algorithm}\\[0.4cm] % Title of your document
 \HRule \\[1.5cm]
 
 %----------------------------------------------------------------------------------------
@@ -84,7 +84,7 @@
 
 \begin{minipage}{0.4\textwidth}
 \begin{flushleft} \large
-\emph{Authors:}\\
+\emph{Author:}\\
 \small{Conor \textsc{Reid}\\ (16202630 - MSc B.A Part-time)} % Your name
 \end{flushleft}
 \end{minipage}
@@ -108,9 +108,6 @@ Dr. James \textsc{McDermott} % Supervisor's Name
 
 \end{titlepage}
 \clearpage
-\setcounter{tocdepth}{1}
-\tableofcontents
-\clearpage
 %----------------------------------------------------------------------------------------
 %	MAIN BODY
 %----------------------------------------------------------------------------------------
@@ -118,50 +115,22 @@ Dr. James \textsc{McDermott} % Supervisor's Name
 %	Overview
 %--------------------------------
 \twocolumn
-\section{Dijkstra's Algorithm}
-{\bf Briefly describe Dijkstra's algorithm for solving the shortest path problem
-(which we have covered in class), including a statement of its time complexity.}\\\\
-{The answer}\\\\
-{Dijkstra's Algorithm is among the most fundamental algorithms in modern computer science, used
-for finding the path of lowest cost between a given point in the graph, and all others. More
-formally; Given a vertex $s$ in a weighted directed graph $G = (V,E)$ where edges are non-negitive, Dijkstra's Algorithm
-finds the path of lowest cost from $s$ to all other vertices in G. This is sometimes referred to as the
-{\it single-source shortest path problem}. \\\\
-The algorithm does this as follows; all nodes are assigned some cost value, set to zero for the initial node
-and infinity for the rest. All vertices, except the initial one, are passed into a set which is
-cycled through. The neighbors of the initial node are considered first, taking the cost (or distance)
-associated with that journey between the nodes.}
-
-
-\section{Bidirectional Dijkstra's Algorithm}
-{\bf Describe the bidirectional Dijkstra algorithm – a variant which is more efficient in practice}
-{\it In order to understand it, you can research it in textbooks, MOOCs, blogs,
-or other external resources. State any assumptions needed for the algorithm to work.}\\\\
-{The answer}
-
-\section{Dijkstra's Original Algorithm - Comparison}
-{\bf With the aid of a diagram, explain how it differs from Dijkstra's original algorithm.}\\\\
-{The answer}
-
-
-\section{Time Complexity}
-{\bf State its time complexity and explain why it is more efficient.}\\\\
-{The answer}
-
-\section{Implementation}
-{\bf Implement both Dijkstra's algorithm and the bidirectional variant, using appropriate data structures for efficiency.}\\\\
-{The answer}
-
-\section{Run-Time behavior}
-{\bf Test the run-time behavior of both algorithms on randomly generated graphs of varying
-sizes in order to demonstrate their scaling behavior. Include a table of data showing run-times.}\\\\
-{The answer}
-
-\section{Conclusions}
-{\bf Briefly state your conclusion concerning run-time behavior.}\\\\
-{The answer}
-
+\setlength{\parindent}{10ex}
+{\bf \noindent Dijkstra's Algorithm}
+{\par \noindent  Dijkstra's Algorithm is used for finding the shortest path (or that of lowest cost) between a initial point in a directed graph, and all others. More formally; Given an initial vertex $s$ in a weighted directed graph $G = (V,E)$ where edges are non-negative, Dijkstra's Algorithm finds the path of lowest cost from $s$ to all other vertices in G. This is sometimes referred to as the {\it single-source shortest path problem}. 
+\par The algorithm works as follows; Every node in a graph is assigned a tentative distance value, which zero for the initial node and infinity for all others. The initial node is marked the current node and thus visited, all others are marked as unvisited and are passed into a set. Visited nodes are not visited again. The neighbours of the current node are calculated for actual tentative distance. That is, the distance to the second node going through the first is calculated. If this distance is lower than the previously assigned tentative distance to this node then it overwrites the same. The process is repeated, assigning the next unvisited node with the lowest tentative distance as the current node. The algorithm stops when the unvisited set is empty.
+\par Dijkstra's algorithm has time complexity $O(n^2)$ where $n$ is the number of nodes in the graph. }\\\\
+{\bf Bidirectional Dijkstra's Algorithm}\\
+{The bi-directional version of Dijkstra's algorithm can be used in an effort to "speed up" the searching process, by reducing the number of visited vertices. In the above explanation, the searching process happens in the direction of $s$ (the initial node) to $t$ (the target node). In this version, searching direction alternates between forward and backwards. That is, we alternate between searching from $s$ to $t$ and from $t$ to $s$, the latter involving following edges backwards. We denote distances for forward search as $d_f(u)$ and distances for backward search as $d_b(u)$. The algorithm terminates when some vertex has been removed from the queues of both searches. Intuitively, we can view bi-directional search as the rowing of two bubbles around the initial vertex and target vertex, terminating when these bubbles intersect \cite{mit}.} 
+\par Interesting to note, is that this technique does not improve the worst case behaviour of the algorithm, or its big 0 notation. That is, bi-drectional searching still has time complexity of $O(n^2)$ (which is really $O(\frac{n^2}{2})$ which is $\sim$ $O(n^2)$). \\\\
+{\bf Dijkstra's Original Algorithm - Comparison}\\
+{\bf Time Complexity}\\
+{\bf Implementation}\\
+{\bf Run-Time behavior}\\
+{\bf Conclusions}
 \clearpage
+\onecolumn
 \begin{thebibliography}{9}
+\bibitem{mit} \url{https://courses.csail.mit.edu/6.006/fall11/lectures/lecture18.pdf}
 \end{thebibliography}
 \end{document}
