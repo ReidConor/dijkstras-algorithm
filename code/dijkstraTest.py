@@ -6,47 +6,40 @@ import priority_queue_dijkstra as pqd
 import bidirectional_dijkstra as dbd
 import genGraphs as gg
 
-
-def timed(function):
-  start = time.time()
-  function
-  elapsed = time.time() - start
-  return elapsed
-
-
-
-def smallGraph():
-    Graph = gg.gen_graph()
-    print ("Details: %s nodes and %s edges." % (nx.number_of_nodes(Graph), nx.number_of_edges(Graph)))
-
-    print("------------------------------------------")
-    print ("dijkstra")
+def timeDijkstra(Graph, initalNode):
     start = time.time()
-    pqd.dijkstra(Graph, "A")
-    end = time.time()
-    print(end - start)
-    print("------------------------------------------")
-    print ("bidirectional_dijkstra")
-    start = time.time()
-    dbd.bidirectional_dijkstra(Graph, "A", "E")
-    end = time.time()
-    print(end - start)
-    print("------------------------------------------")
+    pqd.dijkstra(Graph, initalNode)
+    elapsed = time.time() - start
+    return elapsed
 
+def timeBidirectionalDijkstra(Graph, initalNode, targetNode):
+    start = time.time()
+    dbd.bidirectional_dijkstra(Graph, initalNode, targetNode)
+    elapsed = time.time() - start
+    return elapsed
 
 def sampleFuction(String):
     print(String)
 
 if __name__ == "__main__":
     os.system('clear')
+    print("Starting dijkstraTest")
+    testCount=1
+    graphsPerTest=2
+    print("Running %s tests" % testCount)
+    print("Using %s graphs per test" % graphsPerTest)
+    print("-----------------------------------------")
 
-    for i in range(1):
-        Graph = gg.gen_random_graph()
-        # print(nx.nodes(Graph))
-        # print(nx.edges(Graph))
-        initalNode = choice(nx.nodes(Graph))
-        print(initalNode)
-
-        results = pqd.dijkstra(Graph, initalNode)
-        print(results["distances"])
-        # print(timed(pqd.dijkstra(Graph, choice(nx.nodes(Graph)))))
+    for i in range(1, testCount+1):
+        print("Running test number: %s" % i )
+        Graphs = gg.gen_random_graphs(graphsPerTest)
+        for Graph in Graphs:
+             print("Number of nodes:", len(nx.nodes(Graph)))
+             print("Number of edges:",len(nx.edges(Graph)))
+             initalNode = choice(nx.nodes(Graph))#chose a random node in the graph as the starter node
+             timeTaken = timeDijkstra(Graph, initalNode)
+             print("Time Taken (Dijkstra):", timeTaken)
+             targetNode = choice(nx.nodes(Graph))
+             timeTaken = timeBidirectionalDijkstra(Graph, initalNode, targetNode)
+             print("Time Taken (BidirectionalDijkstra):", timeTaken)
+             print("----------")
