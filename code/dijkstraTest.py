@@ -34,12 +34,12 @@ if __name__ == "__main__":
         print("Running test number: %s" % i )
         Graphs = gg.gen_random_graphs(graphsPerTest)
         for Graph in Graphs:
-             print("Number of nodes:", len(nx.nodes(Graph)))
-             print("Number of edges:",len(nx.edges(Graph)))
-             initalNode = choice(nx.nodes(Graph))#chose a random node in the graph as the starter node
-             timeTaken = timeDijkstra(Graph, initalNode)
-             print("Time Taken (Dijkstra):", timeTaken)
-             targetNode = choice(nx.nodes(Graph))
-             timeTaken = timeBidirectionalDijkstra(Graph, initalNode, targetNode)
-             print("Time Taken (BidirectionalDijkstra):", timeTaken)
-             print("----------")
+            print("----------")
+            print("Number of nodes:", len(nx.nodes(Graph)))
+            print("Number of edges:",len(nx.edges(Graph)))
+            initalNode = choice(nx.nodes(Graph))#chose a random node in the graph as the starter node
+            timeTaken = timeDijkstra(Graph, initalNode)
+            print("Time Taken (Dijkstra):", timeTaken)
+            targetNode = choice(nx.nodes(Graph))
+            timeTaken = timeBidirectionalDijkstra(Graph, initalNode, targetNode)
+            print("Time Taken (BidirectionalDijkstra):", timeTaken)

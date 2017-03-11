@@ -61,13 +61,13 @@ def gen_random_graph():
     return Graph#return the graph
 
 
-#below function returns  graph of random lenght, between 0 and 676 nodes.
+#below function returns x amount of graphs of random lengths, between 0 and 1352 nodes.
 def gen_random_graphs(GraphCount):
     print("Generating %s graphs" % GraphCount)
     upperLetters = list(string.ascii_uppercase)#list of uppercase letters (26)
     lowerLetters = list(string.ascii_lowercase)#list of lowercase letters (26)
     numbers = [1,2]
-    combo = []#to fill with pairs of the above, totalling 26*26 = 676. This forms the max amount of nodes in this graph
+    combo = []#to fill with pairs of the above, totalling 26*26*2 = 1352. This forms the max amount of nodes in this graph
     for upperLetter in upperLetters:
         for lowerLetter in lowerLetters:
             for number in numbers:
@@ -75,7 +75,7 @@ def gen_random_graphs(GraphCount):
 
     graphs = []
     for i in range(GraphCount):
-        number = randint(0,len(combo))#get a random number between 0 and the amount of nodes we can have (676)
+        number = randint(0,len(combo))#get a random number between 0 and the amount of nodes we can have (1352)
         nodes = combo[:number]#slice the total nodes to get the above amount of nodes
         mapping = {}
         thisCombo = combo[:]#apprently without the [:] I dont actaully have two lists....need to slice
