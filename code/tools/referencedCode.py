@@ -25,7 +25,7 @@ def idijkstra(Graph, initalNode):
     #comments applied
 
 if __name__ == "__main__":#test out this function
-    os.system('clear')
+    # os.system('clear')
 
     G = nx.Graph()
     E = (

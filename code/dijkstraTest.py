@@ -34,7 +34,7 @@ def timeBidirectionalDijkstra(Graph, initalNode, targetNode):#timing function fo
 
 
 if __name__ == "__main__":
-    os.system('clear')
+    # os.system('clear')
     print("Starting dijkstraTest")
     testCount=1
     graphsPerTest=10

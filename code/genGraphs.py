@@ -96,7 +96,7 @@ def gen_random_graphs(GraphCount):
 
 
 if __name__ == "__main__":
-    os.system('clear')
+    # os.system('clear')
     Graphs = gen_random_graphs(2)
     # print(len(Graphs))
 

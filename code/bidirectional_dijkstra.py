@@ -39,7 +39,7 @@ def check_answer(my_shortest_path):
         print("The shortest path according to nx: ", nx_shortest_path)
 
 if __name__ == "__main__":
-    os.system('clear')
+    # os.system('clear')
 
     #generate the graph
     Graph = gg.gen_graph()

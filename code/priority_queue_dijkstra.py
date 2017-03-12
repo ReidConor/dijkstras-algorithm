@@ -71,7 +71,7 @@ def dijkstra(G, r):
     return results # let's return the SPST, predecessors and distances: user can decide which to use
 
 if __name__ == "__main__":
-    os.system('clear')
+    # os.system('clear')
     # This is the undirected graph on week 4 slide 28. The solution on the
     # following slide is: {('C', 'F'), ('A', 'C'), ('C', 'D'), ('B',
     # 'G'), ('A', 'B'), ('F', 'E')}
