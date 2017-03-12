@@ -20,10 +20,10 @@ def dijkstra_predecessors_and_distances(G, r):
     return p, D
 
 def dijkstra(G, r):
-    if not G.has_node(r):
+    if not G.has_node(r):#if the graph doesnt have this node
         raise ValueError("Source node " + str(r) + " not present")
 
-    for e1, e2, d in G.edges(data=True):
+    for e1, e2, d in G.edges(data=True):#cant handle negitive weights
         if d["weight"] < 0:
             raise ValueError("Negative weight on edge " + str(e1) + "-" + str(e2))
 
@@ -33,12 +33,12 @@ def dijkstra(G, r):
     p = {} # parent-pointers
     A = set() # our result, an SPST
 
-    for n in G.nodes():
-        if n == r:
-            D[n] = 0
+    for n in G.nodes():#for all nodes
+        if n == r:#if we're at the source node...
+            D[n] = 0#...its weight is zero
         else:
-            if G.has_edge(r, n):
-                D[n] = G[r][n]["weight"]
+            if G.has_edge(r, n):#if we're at a neighbour
+                D[n] = G[r][n]["weight"]#path is the weight of the edge
             else:
                 D[n] = math.inf
 
@@ -68,7 +68,7 @@ def dijkstra(G, r):
     sorted_D = sorted(D.items(), key=operator.itemgetter(1))
     results["generator"]=(n for n in sorted_D)
 
-    return results # let's return the , predecessors and distances: user can decide which to use
+    return results # let's return the SPST, predecessors and distances: user can decide which to use
 
 if __name__ == "__main__":
     os.system('clear')
@@ -98,5 +98,14 @@ if __name__ == "__main__":
 
     initalNode = "A"
     results = dijkstra(G, initalNode)
+    print()
+    print(results["SPST"])
+    print()
+    print("Predecessors for each node")
+    print(results["predecessors"])
+    print()
     print("Shortest path to each node from", initalNode)
     print(results["distances"])
+    print("----------------------------")
+    this = nx.shortest_path(G, initalNode)
+    print(this)

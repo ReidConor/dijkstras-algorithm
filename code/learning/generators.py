@@ -1,6 +1,7 @@
 import random
 import types
 
+#this file is just practice for writing generators
 def lottery():
     for i in range(6):
         print("under for loop")

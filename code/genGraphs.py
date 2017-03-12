@@ -1,6 +1,6 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-from random import randint, uniform
+from random import randint, uniform, seed
 import math
 import string
 import matplotlib.pyplot as plt
@@ -38,14 +38,14 @@ def gen_graph():
 def gen_random_graph():
     upperLetters = list(string.ascii_uppercase)#list of uppercase letters (26)
     lowerLetters = list(string.ascii_lowercase)#list of lowercase letters (26)
-    numbers = [1,2]
+    numbers = [1,2,3,4]
     combo = []#to fill with pairs of the above, totalling 26*26 = 676. This forms the max amount of nodes in this graph
     print("Generating combo list")
     for upperLetter in upperLetters:
         for lowerLetter in lowerLetters:
             for number in numbers:
                 combo.append(upperLetter + lowerLetter + str(number))
-
+    print(len(combo))
     number = randint(0,len(combo))#get a random number between 0 and the amount of nodes we can have (676)
     nodes = combo[:number]#slice the total nodes to get the above amount of nodes
     mapping = {}
@@ -63,22 +63,24 @@ def gen_random_graph():
 
 #below function returns x amount of graphs of random lengths, between 0 and 1352 nodes.
 def gen_random_graphs(GraphCount):
+    seed(3)#graphs will be the same for each run
     print("Generating %s graphs" % GraphCount)
     upperLetters = list(string.ascii_uppercase)#list of uppercase letters (26)
     lowerLetters = list(string.ascii_lowercase)#list of lowercase letters (26)
-    numbers = [1,2]
+    numbers = [1,2,3]
     combo = []#to fill with pairs of the above, totalling 26*26*2 = 1352. This forms the max amount of nodes in this graph
     for upperLetter in upperLetters:
         for lowerLetter in lowerLetters:
             for number in numbers:
                 combo.append(upperLetter + lowerLetter + str(number))
-
+    print(len(combo))
+    #only have to call the combo generation bit once, take a copy and slice it randomly below
     graphs = []
     for i in range(GraphCount):
-        number = randint(0,len(combo))#get a random number between 0 and the amount of nodes we can have (1352)
+        number = randint(1,len(combo))#get a random number between 1 (dont want zero length graph) and the amount of nodes we can have (1352)
         nodes = combo[:number]#slice the total nodes to get the above amount of nodes
         mapping = {}
-        thisCombo = combo[:]#apprently without the [:] I dont actaully have two lists....need to slice
+        thisCombo = combo[:]#apprently without the [:] I dont actaully have two lists....need to slice http://stackoverflow.com/questions/2612802/how-to-clone-or-copy-a-list
         for i in range(len(thisCombo)):
             mapping[i]=thisCombo.pop()#mapping dict contains each nodes name (soem from of Aa, Bx etc)
 
