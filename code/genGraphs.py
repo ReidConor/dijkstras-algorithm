@@ -67,7 +67,7 @@ def gen_random_graphs(GraphCount):
     print("Generating %s graphs" % GraphCount)
     upperLetters = list(string.ascii_uppercase)#list of uppercase letters (26)
     lowerLetters = list(string.ascii_lowercase)#list of lowercase letters (26)
-    numbers = [1,2,3]
+    numbers = [1,2]
     combo = []#to fill with pairs of the above, totalling 26*26*2 = 1352. This forms the max amount of nodes in this graph
     for upperLetter in upperLetters:
         for lowerLetter in lowerLetters:
